@@ -12,6 +12,13 @@ library(ggrepel)
 #library(ggforce)
 library(ggtext)
 source("Helpers.R")
+dir.create('~/.fonts')
+file.copy("www/Spartan-Bold.ttf", "~/.fonts")
+file.copy("www/Spartan-Light.ttf", "~/.fonts")
+file.copy("www/Spartan-Regular.ttf", "~/.fonts")
+file.copy("www/Spartan-Medium.ttf", "~/.fonts")
+system('fc-cache -f ~/.fonts')
+
 # Define UI for application that draws a histogram
 ui <- fluidPage(
     
