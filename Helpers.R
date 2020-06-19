@@ -106,7 +106,6 @@ TransfermarktShiny<- function(team_name, team_num) {
              str_replace("\\.", "") %>% 
              str_replace("'", "") %>% 
              as.numeric(),
-           min_perc = (minutes / total_minutes) %>% round(digits = 3),
            bday = str_replace_all(bday, "\\(.*\\)", "") %>% mdy(),
            join = join %>% mdy(),
            join_age = interval(bday, join) / years(1),
