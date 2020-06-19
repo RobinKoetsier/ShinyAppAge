@@ -8,6 +8,7 @@ library(shiny)
 library(glue)
 library(stringr)
 library(lubridate)
+library(ggrepel)
 source("Helpers.R")
 # Define UI for application that draws a histogram
 ui <- fluidPage(
