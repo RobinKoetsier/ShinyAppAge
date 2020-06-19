@@ -6,6 +6,7 @@ library(polite)
 library(scales)
 library(shiny)
 library(glue)
+library(stringr)
 library(lubridate)
 source("Helpers.R")
 # Define UI for application that draws a histogram
