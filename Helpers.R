@@ -1,6 +1,6 @@
 TransfermarktShiny<- function(team_name, team_num) {
   
-  session <- bow(glue::glue("https://www.transfermarkt.com/{team_name}/leistungsdaten/verein/{team_num}/plus/1?reldata=%26{season}/"))
+  session <- bow(glue::glue("https://www.transfermarkt.com/{team_name}/leistungsdaten/verein/{team_num}/plus/1?reldata=%262019/"))
   #session <- bow(url)
   # grab name from photo element instead
   result_name <- scrape(session) %>% 
@@ -18,7 +18,7 @@ TransfermarktShiny<- function(team_name, team_num) {
     html_text()
   
   ## get length
-  session <- bow(glue::glue("https://www.transfermarkt.com/{team_name}/kader/verein/{team_num}/saison_id/{season}/plus/1"))
+  session <- bow(glue::glue("https://www.transfermarkt.com/{team_name}/kader/verein/{team_num}/saison_id/2019/plus/1"))
   
   result_name2 <- scrape(session) %>% 
     html_nodes("#yw1 .bilderrahmen-fixed") %>% 
