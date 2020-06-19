@@ -1,5 +1,5 @@
 
-library(ddplyr)
+library(dplyr)
 library(ggplot2)
 library(rvest)
 library(polite)
