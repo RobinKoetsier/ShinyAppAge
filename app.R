@@ -1,8 +1,11 @@
-pacman::p_load(tidyverse, polite, scales, ggimage, rvest, 
-               glue, extrafont, showtext, ggrepel, magick, 
-               ggforce, ggtext, lubridate, 
-               cowplot, patchwork, rlang)
+
+library(tidyverse)
+library(rvest)
+library(polite)
+library(scales)
 library(shiny)
+library(glue)
+library(lubridate)
 source("Helpers.R")
 # Define UI for application that draws a histogram
 ui <- fluidPage(
