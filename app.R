@@ -10,6 +10,7 @@ library(stringr)
 library(lubridate)
 library(ggrepel)
 library(ggforce)
+library(ggtext)
 source("Helpers.R")
 # Define UI for application that draws a histogram
 ui <- fluidPage(
