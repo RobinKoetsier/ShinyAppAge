@@ -60,7 +60,7 @@ TransfermarktShiny<- function(team_name, team_num) {
   ## combine BOTH
   results_comb <- results_comb %>% 
     left_join(results_comb2) 
-  all_team_minutes$age2 <- (Sys.Date() - all_team_minutes$bday)/365.25
+  
   
   session <- bow(
     glue::glue(
@@ -114,6 +114,7 @@ TransfermarktShiny<- function(team_name, team_num) {
            leave_age = interval(bday, leave) / years(1),
            age_now = interval(bday, Sys.Date()) / years(1)) %>% 
     filter(!is.na(minutes)) 
+  all_team_minutes$age2 <- (Sys.Date() - all_team_minutes$bday)/365.25
   all_team_minutes$name <- all_team_minutes$name %>% str_replace_all("^(\\w)\\w+ (?=\\w)", "\\1.")
   
   return(all_team_minutes)
