@@ -1,4 +1,4 @@
-
+library(purr)
 library(dplyr)
 library(ggplot2)
 library(rvest)
