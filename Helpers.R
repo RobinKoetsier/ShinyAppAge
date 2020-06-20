@@ -139,7 +139,8 @@ ScatterShiny <- function(data,color1,color2,color3,color4,color5,teamname,alpha)
     scale_x_continuous(breaks = pretty_breaks(n = 10)) +
     labs(x = paste("Age on",format(Sys.time(), "%d %b %Y")),
          y = "Minutes played",
-         title = paste("Age plot", data$Club[1])) +
+         title = paste("Age plot", data$Club[1]),
+        caption = "Made on shiny.robinkoetsier.nl/ShinyAppAge | An app by @RobinWilhelmus ") +
     theme(
       text = element_text(family = "Spartan-Light"),
       plot.title = element_text(size = 15, hjust = 0.5),
@@ -168,7 +169,8 @@ ScatterShinyTime <- function(data,color1,color2,color3,color4,color5,teamname,al
     scale_x_continuous(breaks = pretty_breaks(n = 10)) +
     labs(x = paste("Age on",format(Sys.time(), "%d %b %Y")),
          y = "Minutes played",
-         title = paste("Age plot", data$Club[1])) +
+         title = paste("Age plot", data$Club[1]),
+        caption = "Made on shiny.robinkoetsier.nl/ShinyAppAge | An app by @RobinWilhelmus ") +
     theme(
       text = element_text(family = "Spartan-Light"),
       plot.title = element_text(size = 15, hjust = 0.5),
@@ -197,7 +199,8 @@ ScatterShinyContract <- function(data,color1,color2,color3,color4,color5,teamnam
     scale_x_continuous(breaks = pretty_breaks(n = 10)) +
     labs(x = paste("Age on",format(Sys.time(), "%d %b %Y")),
          y = "Minutes played",
-         title = paste("Age plot", data$Club[1])) +
+         title = paste("Age plot", data$Club[1]),
+        caption = "Made on shiny.robinkoetsier.nl/ShinyAppAge | An app by @RobinWilhelmus ") +
     theme(
       text = element_text(family = "Spartan-Light"),
       plot.title = element_text(size = 15, hjust = 0.5),
@@ -226,7 +229,8 @@ ScatterShinyNo <- function(data,color1,color2,color3,color4,color5,teamname,alph
     scale_x_continuous(breaks = pretty_breaks(n = 10)) +
     labs(x = paste("Age on",format(Sys.time(), "%d %b %Y")),
          y = "Minutes played",
-         title = paste("Age plot", data$Club[1])) +
+         title = paste("Age plot", data$Club[1]),
+        caption = "Made on shiny.robinkoetsier.nl/ShinyAppAge | An app by @RobinWilhelmus ") +
     theme(
       text = element_text(family = "Spartan-Light"),
       plot.title = element_text(size = 15, hjust = 0.5),
