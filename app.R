@@ -103,6 +103,8 @@ server <- function(input, output) {
         color1 <- isolate(input$rect)
         color2 <- isolate(input$line)
         color3 <- isolate(input$line2)
+        color4 <- isolate(input$dot)
+        color5 <- isolate(input$name)
         teamname <- isolate(input$team)
         alpha <- isolate(input$alpha)
         if(input$alpha == 3){
@@ -110,6 +112,8 @@ server <- function(input, output) {
                                  color1 = color1,
                                  color2 = color2,
                                  color3= color3,
+                                 color4= color4,
+                                 color5= color5,
                                  teamname = teamname,
                                  alpha = alpha))
         } else 
@@ -118,6 +122,8 @@ server <- function(input, output) {
                                          color1 = color1,
                                          color2 = color2,
                                          color3= color3,
+                                         color4= color4,
+                                         color5= color5,
                                          teamname = teamname,
                                          alpha = alpha))
             } else 
@@ -126,6 +132,8 @@ server <- function(input, output) {
                                                  color1 = color1,
                                                  color2 = color3,
                                                  color3= color2,
+                                                 color4= color4,
+                                                 color5= color5,
                                                  teamname = teamname,
                                                  alpha = alpha))
                     
@@ -135,6 +143,8 @@ server <- function(input, output) {
                                                color1 = color1,
                                                color2 = color3,
                                                color3= color2,
+                                               color4=color4,
+                                               color5=color5,
                                                teamname = teamname,
                                                alpha = alpha))
                     }
