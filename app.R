@@ -37,7 +37,7 @@ ui <- fluidPage(
             actionButton("myButton", "Scrape!"),
             
             textInput("rect","Rectangle 'peak age' color (white will make it disappear)", "red"),
-            textInput("line","Time ate club color", "black"),
+            textInput("line","Time at club color", "black"),
             textInput("line2","Line contract length color", "black"),
             textInput("dot","Dot color", "black"),
             textInput("name","Player name color", "blue"),
