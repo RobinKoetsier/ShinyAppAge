@@ -123,23 +123,23 @@ TransfermarktShiny<- function(team_name, team_num) {
   return(all_team_minutes)
 }
 
-ScatterShiny <- function(data,color1,color2,color3,teamname,alpha){
+ScatterShiny <- function(data,color1,color2,color3,color4,color5,teamname,alpha){
   #data<- all_team_minutes
   teamname <- gsub("-"," ",teamname)
   
   ggplot(data, aes(x=age_now, y=minutes)) +
     geom_rect(aes(xmin=25,xmax=30, ymin=-Inf,ymax= Inf), fill = color1, alpha=0.01 )+
     
-    ggrepel::geom_text_repel(aes(label = name, family = "Spartan-Light"), size = 3) +
+    ggrepel::geom_text_repel(aes(label = name, family = "Spartan-Light"),color=color5, size = 3) +
     ggforce::geom_link(aes(x=age_now, xend=leave_age, y = minutes, yend = minutes,alpha = -stat(index)), color=color3) +
     ggforce::geom_link(aes(x=age_now, xend=join_age, y = minutes, yend = minutes, alpha = -stat(index)),color=color2)+
-    geom_point(color = "black", size = 2) +
+    geom_point(color=color4, size = 2) +
     theme_bw() + 
     aes(ymin=0) +
     scale_x_continuous(breaks = pretty_breaks(n = 10)) +
     labs(x = paste("Age on",format(Sys.time(), "%d %b %Y")),
          y = "Minutes played",
-         title = paste("Age plot", data$Club[1])) +
+         title = paste("Age plot", Club)) +
     theme(
       text = element_text(family = "Spartan-Light"),
       plot.title = element_text(size = 15, hjust = 0.5),
@@ -152,23 +152,23 @@ ScatterShiny <- function(data,color1,color2,color3,teamname,alpha){
   
 }
 
-ScatterShinyTime <- function(data,color1,color2,color3,teamname,alpha){
+ScatterShinyTime <- function(data,color1,color2,color3,color4,color5,teamname,alpha){
   #data<- all_team_minutes
   teamname <- gsub("-"," ",teamname)
   
   ggplot(data, aes(x=age_now, y=minutes)) +
     geom_rect(aes(xmin=25,xmax=30, ymin=-Inf,ymax= Inf), fill = color1, alpha=0.01 )+
     
-    ggrepel::geom_text_repel(aes(label = name, family = "Spartan-Light"), size = 3) +
+    ggrepel::geom_text_repel(aes(label = name, family = "Spartan-Light"),color=color5, size = 3) +
     # ggforce::geom_link(aes(x=age_now, xend=leave_age, y = minutes, yend = minutes,alpha = (1*-stat(index))), color=color3) +
       ggforce::geom_link(aes(x=age_now, xend=join_age, y = minutes, yend = minutes, alpha = -stat(index)),color=color2)+
-    geom_point(color = "black", size = 2) +
+    geom_point(color=color4, size = 2) +
     theme_bw() + 
     aes(ymin=0) +
     scale_x_continuous(breaks = pretty_breaks(n = 10)) +
     labs(x = paste("Age on",format(Sys.time(), "%d %b %Y")),
          y = "Minutes played",
-         title = paste("Age plot", data$Club[1])) +
+         title = paste("Age plot", Club)) +
     theme(
       text = element_text(family = "Spartan-Light"),
       plot.title = element_text(size = 15, hjust = 0.5),
@@ -181,23 +181,23 @@ ScatterShinyTime <- function(data,color1,color2,color3,teamname,alpha){
   
 }
 
-ScatterShinyContract <- function(data,color1,color2,color3,teamname,alpha){
+ScatterShinyContract <- function(data,color1,color2,color3,color4,color5,teamname,alpha){
   #data<- all_team_minutes
   teamname <- gsub("-"," ",teamname)
   
   ggplot(data, aes(x=age_now, y=minutes)) +
     geom_rect(aes(xmin=25,xmax=30, ymin=-Inf,ymax= Inf), fill = color1, alpha=0.01 )+
     
-    ggrepel::geom_text_repel(aes(label = name, family = "Spartan-Light"), size = 3) +
+    ggrepel::geom_text_repel(aes(label = name, family = "Spartan-Light"),color=color5, size = 3) +
     ggforce::geom_link(aes(x=age_now, xend=leave_age, y = minutes, yend = minutes,alpha = (1*-stat(index))), color=color3) +
     #ggforce::geom_link(aes(x=age_now, xend=join_age, y = minutes, yend = minutes, alpha = -stat(index)),color=color2)+
-    geom_point(color = "black", size = 2) +
+    geom_point(color=color4, size = 2) +
     theme_bw() + 
     aes(ymin=0) +
     scale_x_continuous(breaks = pretty_breaks(n = 10)) +
     labs(x = paste("Age on",format(Sys.time(), "%d %b %Y")),
          y = "Minutes played",
-         title = paste("Age plot", data$Club[1])) +
+         title = paste("Age plot", Club)) +
     theme(
       text = element_text(family = "Spartan-Light"),
       plot.title = element_text(size = 15, hjust = 0.5),
@@ -210,23 +210,23 @@ ScatterShinyContract <- function(data,color1,color2,color3,teamname,alpha){
   
 }
 
-ScatterShinyNo <- function(data,color1,color2,color3,teamname,alpha){
+ScatterShinyNo <- function(data,color1,color2,color3,color4,color5,teamname,alpha){
   #data<- all_team_minutes
   teamname <- gsub("-"," ",teamname)
   
   ggplot(data, aes(x=age_now, y=minutes)) +
     geom_rect(aes(xmin=25,xmax=30, ymin=-Inf,ymax= Inf), fill = color1, alpha=0.01 )+
     
-    ggrepel::geom_text_repel(aes(label = name, family = "Spartan-Light"), size = 3) +
+    ggrepel::geom_text_repel(aes(label = name, family = "Spartan-Light"),color=color5, size = 3) +
    # ggforce::geom_link(aes(x=age_now, xend=leave_age, y = minutes, yend = minutes,alpha = (1*-stat(index))), color=color3) +
   #  ggforce::geom_link(aes(x=age_now, xend=join_age, y = minutes, yend = minutes, alpha = -stat(index)),color=color2)+
-    geom_point(color = "black", size = 2) +
+    geom_point(color = color4, size = 2) +
     theme_bw() + 
     aes(ymin=0) +
     scale_x_continuous(breaks = pretty_breaks(n = 10)) +
     labs(x = paste("Age on",format(Sys.time(), "%d %b %Y")),
          y = "Minutes played",
-         title = paste("Age plot", data$Club[1])) +
+         title = paste("Age plot", Club)) +
     theme(
       text = element_text(family = "Spartan-Light"),
       plot.title = element_text(size = 15, hjust = 0.5),
