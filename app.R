@@ -39,9 +39,9 @@ ui <- fluidPage(
             textInput("rect","Rectangle 'peak age' color", "red"),
             textInput("line","Line contract length color", "black"),
             textInput("line2","Line contract length color", "black"),
-            radioButtons("alpha", "See contract lines?",
-                         c("Yes" = 1,
-                           "No" = 0)),
+           # radioButtons("alpha", "See contract lines?",
+           #              c("Yes" = 1,
+           #                "No" = 0)),
             actionButton("go", "Click here to plot!")
             
         ),
