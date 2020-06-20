@@ -131,8 +131,8 @@ ScatterShiny <- function(data,color1,color2,color3,teamname,alpha){
     geom_rect(aes(xmin=25,xmax=30, ymin=-Inf,ymax= Inf), fill = color1, alpha=0.01 )+
    
     ggrepel::geom_text_repel(aes(label = name, family = "Spartan-Light"), size = 3) +
-    #ggforce::geom_link(aes(x=age_now, xend=leave_age, y = minutes, yend = minutes,alpha = (1*-stat(index))), color=color3) +
-    #ggforce::geom_link(aes(x=age_now, xend=join_age, y = minutes, yend = minutes, alpha = -stat(index)),color=color2)+
+    ggforce::geom_link(aes(x=age_now, xend=leave_age, y = minutes, yend = minutes,alpha = (1*-stat(index))), color=color3) +
+    ggforce::geom_link(aes(x=age_now, xend=join_age, y = minutes, yend = minutes, alpha = -stat(index)),color=color2)+
     geom_point(color = "black", size = 2) +
     theme_bw() + 
      aes(ymin=0) +
