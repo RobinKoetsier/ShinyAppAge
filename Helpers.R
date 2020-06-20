@@ -139,7 +139,7 @@ ScatterShiny <- function(data,color1,color2,color3,teamname,alpha){
     scale_x_continuous(breaks = pretty_breaks(n = 10)) +
     labs(x = paste("Age on",format(Sys.time(), "%d %b %Y")),
          y = "Minutes played",
-         title = paste("Age plot", Club)) +
+         title = paste("Age plot", teamname)) +
     theme(
       text = element_text(family = "Spartan-Light"),
       plot.title = element_text(size = 15, hjust = 0.5),
