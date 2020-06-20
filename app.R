@@ -27,7 +27,7 @@ loadfonts()
 ui <- fluidPage(
     
     # Application title
-    titlePanel("Create your own age plot"),
+    titlePanel("Create your own age plot - A Shiny app by @RobinWilhelmus"),
     
     # Sidebar with a slider input for number of bins 
     sidebarLayout(
@@ -65,8 +65,10 @@ ui <- fluidPage(
                                  h5("Click on the 'scrape!' button and wait a little while."),
                                  h5("A (new) table on this page will appear which means the data is scraped and ready to plot!"),
                                  br(),
-                                 h5("Next, choose some colours from here:"),
-                                 h5("http://sape.inf.usi.ch/quick-reference/ggplot2/colour"),
+                                 h4("Go to the 'Age plot' tab"),
+                                 br(),
+                                 h5("Choose some colours from here:"),
+                                 h5("https://cpb-us-e1.wpmucdn.com/sites.ucsc.edu/dist/d/276/files/2015/10/colorbynames.png"),
                                  h5("Or a hex colour code, enter them in the text fields and click on 'plot!'"),
                                  br(),
                                  h5("Choose white as a colour to have no rectangle for peak age"),
