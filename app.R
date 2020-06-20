@@ -9,7 +9,7 @@ library(glue)
 library(stringr)
 library(lubridate)
 library(ggrepel)
-#library(ggforce)
+library(ggforce)
 library(extrafont)
 library(extrafontdb)
 library(ggtext)
@@ -61,7 +61,7 @@ ui <- fluidPage(
                                  h5("Click on the 'scrape!' button and wait a little while."),
                                  h5("A (new )table on this page will appear which means the data is scraped and ready to plot!"),
                                  br(),
-                                 h5("eNext, enter some colours from here:"),
+                                 h5("Next, enter some colours from here:"),
                                  h5("http://sape.inf.usi.ch/quick-reference/ggplot2/colour"),
                                  h5("Or enter a hex colour code and click on 'plot!'"),
                                  br(),
