@@ -14,12 +14,12 @@ library(extrafont)
 library(extrafontdb)
 library(ggtext)
 source("Helpers.R")
-dir.create('~/.fonts')
-file.copy("www/Spartan-Bold.ttf", "~/.fonts")
-file.copy("www/Spartan-Light.ttf", "~/.fonts")
-file.copy("www/Spartan-Regular.ttf", "~/.fonts")
-file.copy("www/Spartan-Medium.ttf", "~/.fonts")
-system('fc-cache -f ~/.fonts')
+#dir.create('~/.fonts')
+#file.copy("www/Spartan-Bold.ttf", "~/.fonts")
+#file.copy("www/Spartan-Light.ttf", "~/.fonts")
+#file.copy("www/Spartan-Regular.ttf", "~/.fonts")
+#file.copy("www/Spartan-Medium.ttf", "~/.fonts")
+#system('fc-cache -f ~/.fonts')
 
 font_import(paths = "www", pattern = "Spartan", prompt = FALSE)
 loadfonts()
@@ -39,9 +39,11 @@ ui <- fluidPage(
             textInput("rect","Rectangle 'peak age' color", "red"),
             textInput("line","Time ate club color", "black"),
             textInput("line2","Line contract length color", "black"),
-            # radioButtons("alpha", "See contract lines?",
-            #              c("Yes" = 1,
-            #                "No" = 0)),
+             radioButtons("alpha", "See lines?",
+                          c("Both lines" = 3,
+                            "Only time at club" = 2,
+                            "Only contract length" = 1,
+                            "No lines" = 0)),
             actionButton("go", "Click here to plot!")
             
         ),
@@ -99,13 +101,39 @@ server <- function(input, output) {
         color3 <- isolate(input$line2)
         teamname <- isolate(input$team)
         alpha <- isolate(input$alpha)
+        if(input$alpha == 3){
         isolate(ScatterShiny(data = myData(),
                              color1 = color1,
                              color2 = color2,
                              color3= color3,
                              teamname = teamname,
                              alpha = alpha))
-        
+        } else 
+        if(input$alpha == 2){
+                isolate(ScatterShinyTime(data = myData(),
+                                     color1 = color1,
+                                     color2 = color2,
+                                     color3= color3,
+                                     teamname = teamname,
+                                     alpha = alpha))
+        } else 
+            if(input$alpha == 1){
+                isolate(ScatterShinyContract(data = myData(),
+                                     color1 = color1,
+                                     color2 = color3,
+                                     color3= color2,
+                                     teamname = teamname,
+                                     alpha = alpha))
+            
+            } else
+                if(input$alpha == 0){
+                    isolate(ScatterShinyNo(data = myData(),
+                                           color1 = color1,
+                                           color2 = color3,
+                                           color3= color2,
+                                           teamname = teamname,
+                                           alpha = alpha))
+        }
         
     }, height = 400, width = 750 )
 }
