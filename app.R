@@ -14,12 +14,12 @@ library(extrafont)
 library(extrafontdb)
 library(ggtext)
 source("Helpers.R")
-dir.create('~/.fonts')
-file.copy("www/Spartan-Bold.ttf", "~/.fonts")
-file.copy("www/Spartan-Light.ttf", "~/.fonts")
-file.copy("www/Spartan-Regular.ttf", "~/.fonts")
-file.copy("www/Spartan-Medium.ttf", "~/.fonts")
-system('fc-cache -f ~/.fonts')
+#dir.create('~/.fonts')
+#file.copy("www/Spartan-Bold.ttf", "~/.fonts")
+#file.copy("www/Spartan-Light.ttf", "~/.fonts")
+#file.copy("www/Spartan-Regular.ttf", "~/.fonts")
+#file.copy("www/Spartan-Medium.ttf", "~/.fonts")
+#system('fc-cache -f ~/.fonts')
 
 font_import(paths = "www", pattern = "Spartan", prompt = FALSE)
 loadfonts()
@@ -35,13 +35,15 @@ ui <- fluidPage(
             textInput("team", "Team", "pec-zwolle"),
             textInput("teamcode", "Teamcode", "1269"),
             actionButton("myButton", "Scrape!"),
-           
+            
             textInput("rect","Rectangle 'peak age' color", "red"),
-            textInput("line","Line contract length color", "black"),
+            textInput("line","Time ate club color", "black"),
             textInput("line2","Line contract length color", "black"),
-           # radioButtons("alpha", "See contract lines?",
-           #              c("Yes" = 1,
-           #                "No" = 0)),
+            radioButtons("alpha", "See lines?",
+                         c("Both lines" = 3,
+                           "Only time at club" = 2,
+                           "Only contract length" = 1,
+                           "No lines" = 0)),
             actionButton("go", "Click here to plot!")
             
         ),
@@ -68,6 +70,8 @@ ui <- fluidPage(
                                  h5("Choose white a a colour to have no rectangle for peak age"),
                                  tableOutput("myTable")),
                         tabPanel("Age Plot", 
+                                 h5("Data scraped for:"),
+                                 verbatimTextOutput("text1"),
                                  plotOutput("scatplot")))
         )
     )
@@ -77,8 +81,9 @@ ui <- fluidPage(
 server <- function(input, output) {
     url=  reactive({
         glue("https://www.transfermarkt.com/{input$team}/leistungsdaten/verein/{input$teamcode}/reldata/%262019/plus/1")
+        
     })
-    
+    output$text1 <- renderText(url())
     myData <- reactive({
         input$myButton
         data = isolate(TransfermarktShiny(
@@ -96,13 +101,39 @@ server <- function(input, output) {
         color3 <- isolate(input$line2)
         teamname <- isolate(input$team)
         alpha <- isolate(input$alpha)
-        isolate(ScatterShiny(data = myData(),
-                             color1 = color1,
-                             color2 = color2,
-                             color3= color3,
-                             teamname = teamname,
-                             alpha = alpha))
-        
+        if(input$alpha == 3){
+            isolate(ScatterShiny(data = myData(),
+                                 color1 = color1,
+                                 color2 = color2,
+                                 color3= color3,
+                                 teamname = teamname,
+                                 alpha = alpha))
+        } else 
+            if(input$alpha == 2){
+                isolate(ScatterShinyTime(data = myData(),
+                                         color1 = color1,
+                                         color2 = color2,
+                                         color3= color3,
+                                         teamname = teamname,
+                                         alpha = alpha))
+            } else 
+                if(input$alpha == 1){
+                    isolate(ScatterShinyContract(data = myData(),
+                                                 color1 = color1,
+                                                 color2 = color3,
+                                                 color3= color2,
+                                                 teamname = teamname,
+                                                 alpha = alpha))
+                    
+                } else
+                    if(input$alpha == 0){
+                        isolate(ScatterShinyNo(data = myData(),
+                                               color1 = color1,
+                                               color2 = color3,
+                                               color3= color2,
+                                               teamname = teamname,
+                                               alpha = alpha))
+                    }
         
     }, height = 400, width = 750 )
 }
