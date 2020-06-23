@@ -13,6 +13,10 @@ library(ggforce)
 library(extrafont)
 library(extrafontdb)
 library(ggtext)
+library(GAlogger)
+ga_set_tracking_id("UA-170459986-1")
+ga_set_approval(consent = TRUE)
+ga_collect_event(event_category = "Start", event_action = "shiny app launched")
 source("Helpers.R")
 #dir.create('~/.fonts')
 #file.copy("www/Spartan-Bold.ttf", "~/.fonts")
@@ -21,8 +25,8 @@ source("Helpers.R")
 #file.copy("www/Spartan-Medium.ttf", "~/.fonts")
 #system('fc-cache -f ~/.fonts')
 
-font_import(paths = "www", pattern = "Spartan", prompt = FALSE)
-loadfonts()
+#font_import(paths = "www", pattern = "Spartan", prompt = FALSE)
+#loadfonts()
 # Define UI for application that draws a histogram
 ui <- fluidPage(
     
