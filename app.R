@@ -59,6 +59,7 @@ ui <- fluidPage(
             tabsetPanel(type = "tabs",
                         tabPanel("Instructions", 
                                  h4("Instructions", align = "center"),
+                                  uiOutput("tab2"),
                                  h5("Go to transfermarkt.com and search for your favourite team.", align = "left"),
                                  h5("When you're on the page of your team, look at the URL. It looks something like this:", align = "left"),
                                  h5(" "),
@@ -72,7 +73,8 @@ ui <- fluidPage(
                                  h4("Go to the 'Age plot' tab"),
                                  br(),
                                  h5("Choose some colours from here:"),
-                                 h5("https://cpb-us-e1.wpmucdn.com/sites.ucsc.edu/dist/d/276/files/2015/10/colorbynames.png"),
+                                 uiOutput("tab"),
+                                 #h5("https://cpb-us-e1.wpmucdn.com/sites.ucsc.edu/dist/d/276/files/2015/10/colorbynames.png"),
                                  h5("Or a hex colour code, enter them in the text fields and click on 'plot!'"),
                                  br(),
                                  h5("Choose white as a colour to have no rectangle for peak age"),
@@ -92,7 +94,11 @@ server <- function(input, output) {
         
     })
     #output$text1 <- renderText(url())
-    
+    output$tab <- renderUI({
+        tags$a(href="https://cpb-us-e1.wpmucdn.com/sites.ucsc.edu/dist/d/276/files/2015/10/colorbynames.png", "Click here!")})
+    output$tab2 <- renderUI({
+        tags$a(href="https://shinynew.robinkoetsier.nl/ShinyAppAge", "Click here for the app with only the option for one season! It's less slow than this one!")})
+   
     myData <- reactive({
         input$myButton
         data = isolate(TransfermarktShiny(
